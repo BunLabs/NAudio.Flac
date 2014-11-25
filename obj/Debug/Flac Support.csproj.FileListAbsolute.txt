@@ -1,0 +1,5 @@
+C:\Users\Martin\Desktop\Flac Support\bin\Debug\Flac Support.pdb
+C:\Users\Martin\Desktop\Flac Support\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Martin\Desktop\Flac Support\obj\Debug\Flac Support.pdb
+C:\Users\Martin\Desktop\Flac Support\bin\Debug\Flac Support.dll
+C:\Users\Martin\Desktop\Flac Support\obj\Debug\Flac Support.dll

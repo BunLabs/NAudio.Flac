@@ -1,0 +1,5 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ReferencePath>C:\Users\Martin\Desktop\Flac Support\bin\Debug\</ReferencePath>
+  </PropertyGroup>
+</Project>
