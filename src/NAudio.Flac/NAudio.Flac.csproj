@@ -109,7 +109,7 @@
     <Compile Include="FlacConstant.cs" />
     <Compile Include="FlacEntropyCoding.cs" />
     <Compile Include="FlacException.cs" />
-    <Compile Include="FlacFile.cs" />
+    <Compile Include="FlacReader.cs" />
     <Compile Include="FlacFrame.cs" />
     <Compile Include="FlacFrameHeader.cs" />
     <Compile Include="FlacFrameInformation.cs" />
