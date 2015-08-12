@@ -1,3 +1,0 @@
-C:\Users\Martin\Desktop\Flac Support\obj\Release\ResolveAssemblyReference.cache
-C:\Users\Martin\Desktop\Flac Support\obj\Release\Flac_Support.Properties.Resources.resources
-C:\Users\Martin\Desktop\Flac Support\obj\Release\Flac Support.csproj.GenerateResource.Cache

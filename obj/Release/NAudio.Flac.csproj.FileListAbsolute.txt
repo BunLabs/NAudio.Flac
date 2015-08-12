@@ -1,11 +1,6 @@
-C:\Users\Martin\Desktop\Flac Support\bin\Release\Flac Support.dll
-C:\Users\Martin\Desktop\Flac Support\bin\Release\Flac Support.pdb
-C:\Users\Martin\Desktop\Flac Support\bin\Release\NAudio.dll
-C:\Users\Martin\Desktop\Flac Support\obj\Release\ResolveAssemblyReference.cache
-C:\Users\Martin\Desktop\Flac Support\obj\Release\Flac Support.dll
-C:\Users\Martin\Desktop\Flac Support\obj\Release\Flac Support.pdb
-C:\Users\Martin\Desktop\NAudio.Flac\bin\Release\NAudio.Flac.dll
-C:\Users\Martin\Desktop\NAudio.Flac\bin\Release\NAudio.Flac.pdb
-C:\Users\Martin\Desktop\NAudio.Flac\obj\Release\ResolveAssemblyReference.cache
-C:\Users\Martin\Desktop\NAudio.Flac\obj\Release\NAudio.Flac.dll
-C:\Users\Martin\Desktop\NAudio.Flac\obj\Release\NAudio.Flac.pdb
+C:\Users\Nathan\Documents\GitHub\NAudio.Flac\bin\Release\NAudio.Flac.dll
+C:\Users\Nathan\Documents\GitHub\NAudio.Flac\bin\Release\NAudio.Flac.pdb
+C:\Users\Nathan\Documents\GitHub\NAudio.Flac\bin\Release\NAudio.dll
+C:\Users\Nathan\Documents\GitHub\NAudio.Flac\bin\Release\NAudio.xml
+C:\Users\Nathan\Documents\GitHub\NAudio.Flac\obj\Release\NAudio.Flac.dll
+C:\Users\Nathan\Documents\GitHub\NAudio.Flac\obj\Release\NAudio.Flac.pdb
