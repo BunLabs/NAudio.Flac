@@ -65,7 +65,7 @@ namespace NAudio.Flac
             }
         }
 
-        public System.Drawing.Image Image
+        public byte[] Image
         {
             get
             {

@@ -147,21 +147,14 @@ namespace NAudio.Flac
 
         public const string MimeURL = "-->";
 
-        public static System.Drawing.Image DecodeImage(byte[] rawdata, string mimetype)
+        public static byte[] GetImage(byte[] rawdata, string mimetype)
         {
-            Stream stream;
             if (mimetype.Trim() == MimeURL)
             {
-                WebClient client = new WebClient();
-                var data = client.DownloadData(GetURL(rawdata, mimetype));
-                stream = new MemoryStream(data);
-            }
-            else
-            {
-                stream = new MemoryStream(rawdata, false);
+                throw new NotSupportedException($"Pictures embedded as URLs will not be downloaded. URL: {GetURL(rawdata, mimetype)}");
             }
 
-            return Image.FromStream(stream);
+            return rawdata;
         }
 
         public static string GetURL(byte[] RawData, string MimeType)

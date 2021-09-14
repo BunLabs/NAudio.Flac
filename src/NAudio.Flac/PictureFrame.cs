@@ -14,21 +14,16 @@ namespace NAudio.Flac
 
         internal byte[] RawData { get; private set; }
 
-        private Image _image;
+        private byte[] _image;
 
-        /// <summary>
-        /// WARNING: If MimeType equals "-->" the picture will be downloaded from the web.
-        /// Use GetURL() the get the url to the picture. If not, data, contained by the frame will
-        /// be used.
-        /// </summary>
-        public Image Image
+        public byte[] Image
         {
             get { return _image ?? (_image = DecodeImage()); }
         }
 
-        private Image DecodeImage()
+        private byte[] DecodeImage()
         {
-            return ID3Utils.DecodeImage(RawData, MimeType);
+            return ID3Utils.GetImage(RawData, MimeType);
         }
 
         private ID3Version _version;
