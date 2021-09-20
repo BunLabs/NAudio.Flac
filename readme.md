@@ -2,6 +2,10 @@
 
 [![Nuget](https://img.shields.io/nuget/v/BunLabs.NAudio.Flac)](https://www.nuget.org/packages/BunLabs.NAudio.Flac)
 
-This is a fork of a port of the [naudio-flac](https://code.google.com/archive/p/naudio-flac/) library on the now-archived Google Code, by an unknown author and without a license. However, that library is based on [CSCore](https://github.com/filoe/cscore) which is licensed under MS-PL.
+This is a FLAC library for [NAudio], based on the FLAC codec from the [CSCore] audio library. NAudio is currently lacking a FLAC library, and while the included Media Foundation back-end works for most FLAC files, it doesn't work for everything.
 
-This fork also updates the **NAudio.Flac** library to .NET Standard 2.0 and now depends on NAudio.Core 2.0 so it can potentially be used cross-platform.
+This port takes the [CSCore] FLAC codec and makes it available for NAudio (≥2.0) using .NET Standard 2.0. Most other NAudio FLAC libraries are based on an old, archived [fork][naudio-flac] from Google Code. This code was originally also based on CSCore, but CSCore has since received a number of FLAC bug fixes, which are included in this library.
+
+[NAudio]: https://github.com/naudio/NAudio
+[CSCore]: https://github.com/filoe/cscore
+[naudio-flac]: https://code.google.com/archive/p/naudio-flac/
