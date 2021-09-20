@@ -7,24 +7,19 @@
 		<PackageId>BunLabs.NAudio.Flac</PackageId>
 		<Authors>Vivelin</Authors>
 		<Company>BunLabs</Company>
-		<Description>A FLAC library for NAudio &gt;= 2.0</Description>
+		<Description>A FLAC library for NAudio &gt;= 2.0 based on the CSCore FLAC codec</Description>
 		<PackageLicenseExpression>MS-PL</PackageLicenseExpression>
-		<Version>2.0.0</Version>
+		<Version>2.0.1</Version>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<PackageReleaseNotes>
-			- Ported NAudio.Flac to .NET Standard 2.0
-			- Changed dependency from NAudio 1 to NAudio.Core 2
-			- Replaced System.Drawing references to raw byte arrays
-			- Removed functionality that could download external URLs and decode them automatically
-		</PackageReleaseNotes>
+		<PackageReleaseNotes>- Re-ported from current CSCore library that includes FLAC bugfixes</PackageReleaseNotes>
 		<PackageProjectUrl>https://github.com/BunLabs/NAudio.Flac</PackageProjectUrl>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
 		<PackageReference Include="NAudio.Core" Version="2.0.0" />
 	</ItemGroup>
 

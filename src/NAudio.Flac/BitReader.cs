@@ -3,7 +3,11 @@ using System.Runtime.InteropServices;
 
 namespace NAudio.Flac
 {
-    public unsafe class BitReader : IDisposable
+    /// <summary>
+    /// This class is based on the CUETools.NET BitReader (see http://sourceforge.net/p/cuetoolsnet/code/ci/default/tree/CUETools.Codecs/BitReader.cs)
+    /// The author "Grigory Chudov" explicitly gave the permission to use the source as part of the cscore source code which got licensed under the ms-pl.
+    /// </summary>
+    internal unsafe class BitReader : IDisposable
     {
         private readonly byte* _storedBuffer;
         private int _bitoffset;
@@ -20,15 +24,11 @@ namespace NAudio.Flac
                 throw new ArgumentOutOfRangeException("offset");
 
             _hBuffer = GCHandle.Alloc(buffer, GCHandleType.Pinned);
-            _buffer = _storedBuffer = (byte*) _hBuffer.AddrOfPinnedObject().ToPointer() + offset;
+            _buffer = _storedBuffer = (byte*)_hBuffer.AddrOfPinnedObject().ToPointer() + offset;
 
             _cache = PeekCache();
         }
 
-        /// <summary>
-        /// </summary>
-        /// <param name="buffer">buffer</param>
-        /// <param name="offset">offset in bits</param>
         public BitReader(byte* buffer, int offset)
         {
             if (new IntPtr(buffer) == IntPtr.Zero)
@@ -49,9 +49,19 @@ namespace NAudio.Flac
             get { return _cache; }
         }
 
+        protected internal int CacheSigned
+        {
+            get { return (int)Cache; }
+        }
+
         public byte* Buffer
         {
             get { return _storedBuffer; }
+        }
+
+        public IntPtr BufferPtr
+        {
+            get { return new IntPtr(Buffer); }
         }
 
         public int Position
@@ -70,10 +80,10 @@ namespace NAudio.Flac
             unchecked
             {
                 byte* ptr = _buffer;
-                uint result = *(ptr++);
-                result = (result << 8) + *(ptr++);
-                result = (result << 8) + *(ptr++);
-                result = (result << 8) + *(ptr++);
+                uint result = *ptr++;
+                result = (result << 8) + *ptr++;
+                result = (result << 8) + *ptr++;
+                result = (result << 8) + *ptr++;
 
                 return result << _bitoffset;
             }
@@ -125,67 +135,68 @@ namespace NAudio.Flac
             if (bits <= 0 || bits > 32)
                 throw new ArgumentOutOfRangeException("bits", "bits has to be a value between 1 and 32");
 
-            var result = (int) ReadBits(bits);
-            result <<= (32 - bits);
-            result >>= (32 - bits);
+            var result = (int)ReadBits(bits);
+            result <<= 32 - bits;
+            result >>= 32 - bits;
             return result;
         }
 
         public ulong ReadBits64(int bits)
         {
             if (bits <= 0 || bits > 64)
-                throw new ArgumentOutOfRangeException("bits", "bits has to be a value between 1 and 32");
+                throw new ArgumentOutOfRangeException("bits", "bits has to be a value between 1 and 64");
 
             ulong result = ReadBits(Math.Min(24, bits));
             if (bits <= 24)
                 return result;
 
             bits -= 24;
-            result = (result << bits) | ReadBits(Math.Min(24, bits));
+            result = result << bits | ReadBits(Math.Min(24, bits));
             if (bits <= 24)
                 return result;
 
             bits -= 24;
-            return (result << bits) | ReadBits(bits);
+            return result << bits | ReadBits(bits);
         }
 
         public long ReadBits64Signed(int bits)
         {
             if (bits <= 0 || bits > 64)
-                throw new ArgumentOutOfRangeException("bits", "bits has to be a value between 1 and 32");
+                throw new ArgumentOutOfRangeException("bits", "bits has to be a value between 1 and 64");
 
-            var result = (long) ReadBits64(bits);
-            result <<= (64 - bits);
-            result >>= (64 - bits);
+            var result = (long)ReadBits64(bits);
+            result <<= 64 - bits;
+            result >>= 64 - bits;
             return result;
         }
 
-        public Int16 ReadInt16()
+        public short ReadInt16()
         {
-            return (Int16) ReadBitsSigned(16);
+            return (short)ReadBitsSigned(16);
         }
 
-        public UInt16 ReadUInt16()
+        public ushort ReadUInt16()
         {
-            return (UInt16) ReadBits(16);
+            return (ushort)ReadBits(16);
         }
 
-        public Int32 ReadInt32()
+        public int ReadInt32()
         {
             return ReadBitsSigned(32);
         }
 
-        public UInt32 ReadUInt32()
+
+        public uint ReadUInt32()
         {
             return ReadBits(32);
         }
 
-        public UInt64 ReadUInt64()
+        public ulong ReadUInt64()
         {
             return ReadBits64(64);
         }
 
-        public Int64 ReadInt64()
+        public long ReadInt64()
         {
             return ReadBits64Signed(64);
         }
@@ -199,7 +210,7 @@ namespace NAudio.Flac
         {
             uint result = _cache >> 31;
             SeekBits(1);
-            return (int) result;
+            return (int)result;
         }
 
         public void Flush()

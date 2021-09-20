@@ -45,6 +45,7 @@ namespace FlacTest
                 Console.WriteLine();
                 Console.WriteLine("Now playing with Media Foundation back-end, press any key to continue.");
                 Console.ReadKey(true);
+                player.Stop();
             }
             catch (Exception ex)
             {
@@ -59,14 +60,15 @@ namespace FlacTest
         {
             try
             {
-                using var player = new NAudio.Wave.DirectSoundOut();
                 using var reader = new NAudio.Flac.FlacReader(path);
+                using var player = new NAudio.Wave.DirectSoundOut();
                 player.Init(reader);
                 player.Play();
 
                 Console.WriteLine();
                 Console.WriteLine("Now playing with NAudio.Flac back-end, press any key to continue.");
                 Console.ReadKey(true);
+                player.Stop();
             }
             catch (Exception ex)
             {
@@ -89,6 +91,7 @@ namespace FlacTest
                 Console.WriteLine();
                 Console.WriteLine("Now playing with CSCore back-end, press any key to continue.");
                 Console.ReadKey(true);
+                player.Stop();
             }
             catch (Exception ex)
             {
